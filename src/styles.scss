@@ -65,6 +65,7 @@ h2.isBold {
 .btn-container {
     display: flex;
     margin-top: 12px;
+    gap: 12px;
 
     &.btn-centered {
         justify-content: center;
@@ -84,7 +85,6 @@ h2.isBold {
 .textarea {
 
     padding: 8px 10px;
-    margin-bottom: 20px;
 
     width: 100%;
 
@@ -111,10 +111,18 @@ h2.isBold {
     }
 }
 
+.form-field {
+    margin-bottom: 20px;
+}
+
 .textarea {
     display: block;
 
     resize: vertical;
 
     min-height: 100px;
+}
+
+a {
+    text-decoration: none;
 }
