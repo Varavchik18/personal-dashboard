@@ -11,6 +11,7 @@ export class BookmarkTileComponent implements OnInit {
   @Input() bookmark: Bookmark
 
   tileIconSrc: string
+  faviconError: boolean
 
   constructor() { }
 
@@ -18,5 +19,5 @@ export class BookmarkTileComponent implements OnInit {
     this.tileIconSrc = this.bookmark.url.origin + '/favicon.ico'
   }
 
-  
+
 }

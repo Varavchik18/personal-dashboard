@@ -3,6 +3,7 @@ import { FormControl, NgForm, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Note } from 'src/app/shared/note/note.model';
 import { NoteService } from 'src/app/shared/note/note.service';
+import { NotificationService } from 'src/app/shared/notification.service';
 
 @Component({
   selector: 'app-add-note',
@@ -13,7 +14,7 @@ export class AddNoteComponent implements OnInit {
 
   showValidationErrors: boolean = false;
 
-  constructor(private noteService: NoteService, private router: Router) { }
+  constructor(private noteService: NoteService, private router: Router, private notificationService: NotificationService) { }
 
   ngOnInit(): void {
   }
@@ -28,6 +29,8 @@ export class AddNoteComponent implements OnInit {
 
       this.noteService.addNote(note);
       this.router.navigateByUrl("/notes")
+
+      this.notificationService.show('Created note !')
       return this.showValidationErrors = false
     }
   }

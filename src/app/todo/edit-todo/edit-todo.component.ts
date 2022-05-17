@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { ActivatedRoute, ParamMap, Router } from '@angular/router';
+import { NotificationService } from 'src/app/shared/notification.service';
 import { ToDo } from 'src/app/shared/todo/todo.model';
 import { TodoService } from 'src/app/shared/todo/todo.service';
 
@@ -13,7 +14,7 @@ export class EditTodoComponent implements OnInit {
   showValidationErrors: boolean = false;
   todo: ToDo
 
-  constructor(private route: ActivatedRoute, private todoService: TodoService, private router: Router) { }
+  constructor(private route: ActivatedRoute, private todoService: TodoService, private router: Router, private notificationService: NotificationService) { }
 
   ngOnInit(): void {
     this.route.paramMap.subscribe((paramMap: ParamMap) => {
@@ -27,6 +28,8 @@ export class EditTodoComponent implements OnInit {
 
     this.todoService.updateTodo(this.todo.id, form.value)
     this.router.navigateByUrl('/todo')
+
+    this.notificationService.show('Task updated !')
     return
   }
 
